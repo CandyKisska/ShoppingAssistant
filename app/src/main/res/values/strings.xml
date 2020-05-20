@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Shopping Assistant</string>
+    <string-array name="ShopNames">
+        <item>Ebay</item>
+        <item>Ozon</item>
+    </string-array>
 </resources>
