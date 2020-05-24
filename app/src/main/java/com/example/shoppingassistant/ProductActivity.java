@@ -17,7 +17,6 @@ import androidx.appcompat.app.AppCompatActivity;
 public class ProductActivity extends AppCompatActivity {
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,8 +27,8 @@ public class ProductActivity extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String result = "Ebay https://open.api.ebay.com/shopping?callname=GetSingleItem&responseencoding=XML&appid=C-Shopping-PRD-bc51f635b-dd94064c&siteid=77&version=967&ItemID=161933801004&IncludeSelector=Details";
-                Spinner spinner = findViewById(R.id.spinner);
+                String result = "";
+                //Spinner spinner = findViewById(R.id.spinner);
                 Log.println(Log.ASSERT, "Product", "внутри");
                 final EditText href = findViewById(R.id.href);
                 final TextView message = findViewById(R.id.message);
@@ -37,16 +36,17 @@ public class ProductActivity extends AppCompatActivity {
                 try {
                     result = makeRequest(href.getText().toString());
                     Log.println(Log.ASSERT, "Add", result);
-                    result=spinner.getSelectedItem().toString()+" "+ result;
-                    message.setText("Товар успешно добавлен");
-                    message.setTextColor(Color.GREEN);
+                    message.setText("✔ Товар успешно добавлен");
+                    //message.setTextColor(Color.argb(255, 15, 170, 20));
+                    message.setBackgroundColor(Color.argb(255, 153, 204, 0));
                     Intent intent = new Intent();
                     intent.putExtra("result", result);
                     setResult(RESULT_OK, intent);
                     finish();
                 } catch (Exception e) {
-                    message.setText("Ошибка. Неверная ссылка");
-                    message.setTextColor(Color.RED);
+                    message.setText("✖ Ошибка. Неверная ссылка");
+                    //message.setTextColor(Color.argb(255, 159, 26, 26));
+                    message.setBackgroundColor(Color.RED);//99cc00
                 }
 
 

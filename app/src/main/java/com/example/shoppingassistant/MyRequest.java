@@ -16,7 +16,7 @@ class MyRequest extends AsyncTask<String, Void, Product> {
     protected Product doInBackground(String... urls) {
 
         Log.println(Log.ASSERT, "WORKS",urls[0]);
-        return new EbayRequest().get(urls[1]);
+        return new EbayRequest().get(urls[0]);
     }
 
     @Override

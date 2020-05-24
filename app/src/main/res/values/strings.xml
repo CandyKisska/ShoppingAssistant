@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Shopping Assistant</string>
+    <string name="href">Вставьте ссылку на товар eBay</string>
+    <string name="add">Добавить</string>
     <string-array name="ShopNames">
         <item>Ebay</item>
         <item>Ozon</item>
