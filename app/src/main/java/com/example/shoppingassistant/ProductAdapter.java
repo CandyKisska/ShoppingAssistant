@@ -87,8 +87,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         });
 
         holder.timeLeft.setText("Осталось времени:" + products.get(position).timeLeft
-                .replaceAll("S", "с.")
-                .replaceAll("M", "мин. ")
+                .replaceAll("[0-9]+S+", "мин.")
+                .replaceAll("M", "")
                 .replaceAll("H", "ч. ")
                 .replaceAll("D", "дн.")
                 .replace('P', ' ')

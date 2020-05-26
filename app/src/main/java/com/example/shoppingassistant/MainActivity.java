@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     HashSet<String> urls = new HashSet<>();
     private Handler mHandler;
     private int mInterval = 60000;
-    MyRequest myRequest = new MyRequest();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(productAdapter);
 
         settings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
-        if (settings.contains("Products")) {
+        /*if (settings.contains("Products")) {
             settings.getStringSet("Products", urls);
             Log.println(Log.ASSERT, "List", urls.toString());
 
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
 
-        }
+        }*/
 
         mHandler = new Handler();
 
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
+        MyRequest myRequest = new MyRequest();
         String result = "";
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                 products.add(myRequest.get(5, TimeUnit.SECONDS));
                 recyclerView.getAdapter().notifyDataSetChanged();
                 startRepeatingTask();
-
+            myRequest.cancel(true);
             } catch (InterruptedException | ExecutionException | TimeoutException e) {
                 e.printStackTrace();
             }
@@ -119,13 +119,15 @@ public class MainActivity extends AppCompatActivity {
     Runnable mStatusChecker = new Runnable() {
         @Override
         public void run() {
-            MyRequest myRequest = new MyRequest();
+
             try {
 
                 for (Product product : products) {
-                    myRequest.execute(product.url);
-                    products.set(products.indexOf(product), myRequest.get(10, TimeUnit.SECONDS));
+                    MyRequest reRequest = new MyRequest();
+                    reRequest.execute(product.url);
+                    products.set(products.indexOf(product), reRequest.get(10, TimeUnit.SECONDS));
                     recyclerView.getAdapter().notifyDataSetChanged();
+
                 }
 
 
@@ -145,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
 
     void stopRepeatingTask() {
         mHandler.removeCallbacks(mStatusChecker);
+
     }
 
 }
