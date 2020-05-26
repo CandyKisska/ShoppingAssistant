@@ -65,9 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-
         mHandler = new Handler();
-
 
         Button button = findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
@@ -124,11 +122,13 @@ public class MainActivity extends AppCompatActivity {
             MyRequest myRequest = new MyRequest();
             try {
 
-                for (Product product: products){
+                for (Product product : products) {
                     myRequest.execute(product.url);
-                    products.set(0,myRequest.get(10, TimeUnit.SECONDS));
+                    products.set(products.indexOf(product), myRequest.get(10, TimeUnit.SECONDS));
+                    recyclerView.getAdapter().notifyDataSetChanged();
                 }
-                recyclerView.getAdapter().notifyDataSetChanged();
+
+
 
 
             } catch (InterruptedException | ExecutionException | TimeoutException e) {
