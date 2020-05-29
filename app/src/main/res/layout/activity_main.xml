@@ -4,37 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_bright"
+    android:background="@android:color/background_light"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <ScrollView
+    <Button
+        android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="12dp">
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="#5566dd"
+        android:text="Добавить товар"
+        android:textColor="#FFFFFF" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp">
 
-            <Button
-                android:id="@+id/button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:background="@android:color/holo_orange_light"
-                android:text="Добавить товар"
-                android:textColor="@android:color/background_light" />
+    </androidx.recyclerview.widget.RecyclerView>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </androidx.recyclerview.widget.RecyclerView>
-
-        </LinearLayout>
-    </ScrollView>
 
 </LinearLayout>

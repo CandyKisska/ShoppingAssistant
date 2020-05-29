@@ -5,7 +5,7 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_bright">
+    android:background="@android:color/background_light">
 
     <EditText
         android:id="@+id/href"
@@ -13,15 +13,14 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"
-        android:backgroundTint="@android:color/holo_orange_dark"
         android:ems="10"
         android:hint="@string/href"
         android:inputType="textPersonName"
         android:shadowColor="@android:color/background_dark"
-        android:textColor="@android:color/background_light"
-        android:textColorHighlight="@android:color/holo_orange_light"
-        android:textColorHint="@android:color/white"
-        android:textColorLink="@android:color/holo_orange_dark"
+        android:textColor="#333333"
+        android:textColorHighlight="@android:color/holo_blue_bright"
+        android:textColorHint="#333333"
+        android:textColorLink="#333333"
         android:textCursorDrawable="@drawable/orange"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,9 +34,9 @@
         android:layout_marginLeft="12dp"
         android:layout_marginTop="24dp"
         android:layout_marginRight="12dp"
-        android:background="@android:color/holo_orange_light"
+        android:background="#5566dd"
         android:text="@string/add"
-        android:textColor="@android:color/background_light"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/href" />

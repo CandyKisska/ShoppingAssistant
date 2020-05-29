@@ -37,16 +37,15 @@ public class ProductActivity extends AppCompatActivity {
                     result = makeRequest(href.getText().toString());
                     Log.println(Log.ASSERT, "Add", result);
                     message.setText("✔ Товар успешно добавлен");
-                    //message.setTextColor(Color.argb(255, 15, 170, 20));
-                    message.setBackgroundColor(Color.argb(255, 153, 204, 0));
+                    message.setTextColor(Color.GREEN);
                     Intent intent = new Intent();
                     intent.putExtra("result", result);
                     setResult(RESULT_OK, intent);
                     finish();
                 } catch (Exception e) {
                     message.setText("✖ Ошибка. Неверная ссылка");
-                    //message.setTextColor(Color.argb(255, 159, 26, 26));
-                    message.setBackgroundColor(Color.RED);//99cc00
+                    message.setTextColor(Color.RED);
+
                 }
 
 
@@ -54,6 +53,14 @@ public class ProductActivity extends AppCompatActivity {
 
         });
 
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Intent intent = new Intent();
+        setResult(RESULT_CANCELED, intent);
+        //finish();
     }
 
 
